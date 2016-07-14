@@ -23,7 +23,7 @@
                 "continuation": "continuation",
                 "select": "select"
             },
-            "components": ["prompt", "tmux"]
+            "components": ["tmux"]
         },
         "tmux": {
             "colorscheme": "default",
