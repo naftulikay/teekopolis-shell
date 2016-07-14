@@ -2,21 +2,48 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
+function 256c() {
+    echo "\e[38;5;$1m"
+}
+
+function setup_prompt() {
+    if [ "$EUID" == "0" ]; then
+        local prompt_symbol="☢ "
+        local prompt_symbol_color="$(256c 196)"
+    else
+        local prompt_symbol="★ "
+        local prompt_symbol_color="$(256c 117)"
+    fi
+
+    local bold='\e[1m'
+    local stop_color='\e[m'
+
+    local symbol="${bold}${prompt_symbol_color}${prompt_symbol}${stop_color}"
+
+    PS1="\u@\h:\w ${symbol} "
+}
+
+# begin prompt configuration
+setup_prompt
+unset setup_prompt 256c
+# end prompt configuration
 
 # set the tty for gpg to use
 export GPG_TTY="$(tty)"
+# setup gpg agent socket variable
+export GPG_AGENT_INFO="$HOME/.gnupg/S.gpg-agent"
 # use gpg-agent for ssh
 export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
 
 # phat colors yo
 export TERM="screen-256color"
 
-# use vim
+# use vim as an editor
 export EDITOR="vim"
 
 # allow powerline to report back to tmux
