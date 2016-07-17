@@ -7,29 +7,30 @@ help:
 
 install-tmux:
 	@echo "installing tmux configuration..."
-	@install tmux/tmux.conf ${HOME}/.tmux.conf
+	@install -m 0600 tmux/tmux.conf ${HOME}/.tmux.conf
 
 install-powerline:
 	@echo "installing powerline configuration..."
 	@test -d ${HOME}/.config/powerline/themes/tmux || \
-		mkdir -p ${HOME}/.config/powerline/themes/tmux
-	@install powerline/config.json ${HOME}/.config/powerline/
-	@install powerline/themes/tmux/default.json \
+		mkdir -p -m 0700 ${HOME}/.config/powerline/themes/tmux
+	@install -m 0600 powerline/config.json ${HOME}/.config/powerline/
+	@install -m 0600 powerline/themes/tmux/default.json \
 		${HOME}/.config/powerline/themes/tmux/
 
 install-ipython:
 	@echo "installing ipython configuration..."
 	@test -d ${HOME}/.ipython/profile_default || \
-		mkdir -p ${HOME}/.ipython/profile_default
-	@install ipython/ipython_config.py ${HOME}/.ipython/profile_default
+		mkdir -p -m 0700 ${HOME}/.ipython/profile_default
+	@install -m 0600 ipython/ipython_config.py ${HOME}/.ipython/profile_default
 
 install-git:
 	@echo "installing git configuration..."
-	@install git/gitconfig ${HOME}/.gitconfig
+	@install -m 0600 git/gitconfig ${HOME}/.gitconfig
 
 install-bash:
 	@echo "installing bash configuration..."
-	@install bash/bashrc ${HOME}/.bashrc
-	@install bash/bash_profile ${HOME}/.bash_profile
+	@install -m 0700 bash/bashrc ${HOME}/.bashrc
+	@install -m 0700 bash/bash_aliases ${HOME}/.bash_aliases
+	@install -m 0700 bash/bash_profile ${HOME}/.bash_profile
 
 install: install-powerline install-tmux install-ipython install-git install-bash

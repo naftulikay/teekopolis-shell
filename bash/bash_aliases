@@ -1,0 +1,20 @@
+# .bash_aliases
+
+# clipboard
+alias xc="xsel -i -b"
+alias xco="xsel -o -b"
+
+# date and time
+{
+    # 2016-07-17 00:15:32 PDT
+    naoformat="%Y-%m-%d %H:%M:%S %Z"
+    # 2016-07-17T02:36:16+00:00
+    iso8601format="%Y-%m-%dT%H:%M:%S%:z"
+
+    alias nao="date +\"$naoformat\""
+    alias utc-nao="date -u +\"$naoformat\""
+    alias iso8601="date +\"$iso8601format\""
+    alias utc-iso8601="date -u +\"$iso8601format\""
+
+    unset naoformat iso8601format
+}
