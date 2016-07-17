@@ -23,9 +23,13 @@ install-ipython:
 		mkdir -p ${HOME}/.ipython/profile_default
 	@install ipython/ipython_config.py ${HOME}/.ipython/profile_default
 
+install-git:
+	@echo "installing git configuration..."
+	@install git/gitconfig ${HOME}/.gitconfig
+
 install-bash:
 	@echo "installing bash configuration..."
 	@install bash/bashrc ${HOME}/.bashrc
 	@install bash/bash_profile ${HOME}/.bash_profile
 
-install: install-powerline install-tmux install-ipython install-bash
+install: install-powerline install-tmux install-ipython install-git install-bash

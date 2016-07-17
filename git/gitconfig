@@ -1,0 +1,10 @@
+[user]
+    name = Naftuli Tzvi Kay
+    email = rfkrocktk@gmail.com
+    signingkey = 986771C040A5FE2FA3E7A38082835A58DD11F1D1
+[commit]
+    gpgsign = true
+[core]
+    editor = vim
+[gpg]
+    program = /usr/bin/gpg2
