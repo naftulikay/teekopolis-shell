@@ -7,17 +7,17 @@ fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
-function 256c() {
+function c256() {
     echo "\e[38;5;$1m"
 }
 
 function setup_prompt() {
     if [ "$EUID" == "0" ]; then
         local prompt_symbol="☢ "
-        local prompt_symbol_color="$(256c 196)"
+        local prompt_symbol_color="$(c256 196)"
     else
         local prompt_symbol="★ "
-        local prompt_symbol_color="$(256c 117)"
+        local prompt_symbol_color="$(c256 117)"
     fi
 
     local bold='\e[1m'
@@ -30,7 +30,7 @@ function setup_prompt() {
 
 # begin prompt configuration
 setup_prompt
-unset setup_prompt 256c
+unset setup_prompt c256
 # end prompt configuration
 
 # set the tty for gpg to use
